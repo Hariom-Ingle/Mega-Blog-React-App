@@ -1,4 +1,5 @@
-import conf  from '../conf.js';
+import conf  from '../conf/conf.js';
+ 
 // step   1 importing all appwrite  envirment variabl form file  name conf
 import {Client,Account,ID} from "appwrite"
 // step 2   importing all 
@@ -11,9 +12,11 @@ export class AuthService {
     // A constructor is a special member function of a class that is called whenever an object of that class is created
     // so  we have created  constructor 
     constructor(){
+        console.log("Appwrite URL:", conf.appwriteUrl); // Debug log
         this.client
-           .setEndpoint(conf.appWriteUrl) 
-           .setProject(conf.appWriteProjectId);
+        .setEndpoint(conf.appwriteUrl)
+        .setProject(conf.appwriteProjectId);
+        
         this.account = new Account  (this.client);        
                     
     }
@@ -50,7 +53,7 @@ export class AuthService {
 
     async getCurrentUser(){
          try{
-            return await this.account.get()
+            return await this.account.get();
          }
          catch(error){
             console.log("Appwrite service:: getCurrentUser::error",error);
@@ -70,6 +73,6 @@ export class AuthService {
     }
 }
 
-const authService =new AuthService();
+const authService = new AuthService();
 // Here   i have created a  authService name  object and import it  so in anothe place the  it will eaiser to use the method   object.methodname 
 export default authService
