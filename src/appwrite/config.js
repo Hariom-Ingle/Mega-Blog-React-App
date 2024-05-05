@@ -1,4 +1,4 @@
-import conf from "../conf.js";
+import conf from "../conf/conf.js";
 // step   1 importing all appwrite  envirment variabl form file  name conf
 import { Client, ID, Databases, Storage, Query } from "appwrite";
 // step 2   importing all
